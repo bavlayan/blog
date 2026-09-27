@@ -1,0 +1,54 @@
+baseURL = 'https://avlayan.io/'
+locale = 'tr'
+defaultContentLanguage = 'tr'
+title = 'B.AVLAYAN'
+enableRobotsTXT = true
+summaryLength = 30
+
+[pagination]
+  pagerSize = 20
+
+[params]
+  motd = 'Kendime Notlar'
+  email = 'b.avlayan@gmail.com'
+  since = '2026'
+  pgpId = '-'
+  pgpUrl = '/pgp.txt'
+  sourceUrl = 'https://github.com/bavlayan/blog'
+  license = 'CC BY-SA 4.0'
+  homePostCount = 8
+
+[markup.highlight]
+  noClasses = false
+  lineNos = false
+  tabWidth = 2
+  guessSyntax = true
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[taxonomies]
+  etiket = 'etiketler'
+
+[outputs]
+  home = ['html', 'rss']
+
+[[menus.main]]
+  name = 'dizin'
+  url = '/'
+  weight = 1
+
+[[menus.main]]
+  name = 'arşiv'
+  url = '/yazilar/'
+  weight = 2
+
+[[menus.main]]
+  name = 'etiketler'
+  url = '/etiketler/'
+  weight = 3
+
+[[menus.main]]
+  name = 'rss'
+  url = '/index.xml'
+  weight = 4

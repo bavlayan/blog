@@ -1,0 +1,11 @@
+{{ define "main" }}
+<main class="post">
+  <article>
+    <h1>404 — dosya bulunamadı</h1>
+    <pre class="term"><span class="p">bavlayan@shell</span>:~$ cat {{ "." }}{{ .RelPermalink }}
+cat: böyle bir dosya ya da dizin yok</pre>
+    <p>Aradığınız yazı taşınmış ya da hiç var olmamış olabilir.
+    <a href="{{ "/yazilar/" | relURL }}">Arşive</a> bakmayı deneyin.</p>
+  </article>
+</main>
+{{ end }}

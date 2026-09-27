@@ -1,0 +1,45 @@
+{{ define "main" }}
+<main>
+  <section class="box intro">
+    <span class="box-tag">hakkında</span>
+    {{ .Content }}
+    <div class="meta">
+      {{ with site.Params.email }}<span><a href="mailto:{{ . }}">{{ . }}</a></span>{{ end }}
+      {{ with site.Params.pgpId }}<span>pgp <a href="{{ site.Params.pgpUrl | relURL }}">{{ . }}</a></span>{{ end }}
+      <span><a href="{{ "index.xml" | relURL }}">/index.xml</a></span>
+      {{ with site.Params.since }}<span class="on">● {{ . }}'dan beri</span>{{ end }}
+    </div>
+  </section>
+
+  {{ $posts := (where site.RegularPages "Type" "yazilar").ByDate.Reverse }}
+  <div class="sec-head">
+    <b>~/yazilar</b> <span class="ln"></span> <span>{{ len $posts }} kayıt</span>
+  </div>
+  {{ partial "postlist.html" (dict "pages" (first (site.Params.homePostCount | default 8) $posts)) }}
+  {{ if gt (len $posts) (site.Params.homePostCount | default 8) }}
+    <p class="more"><a href="{{ "/yazilar/" | relURL }}">tüm arşiv</a> — {{ site.Params.since }}'dan bu yana</p>
+  {{ end }}
+
+  {{ with hugo.Data.deneyim }}
+    <div class="sec-head">
+      <b>~/deneyim</b> <span class="ln"></span>
+      {{ with site.Params.deneyimSuresi }}<span>{{ . }}</span>{{ end }}
+    </div>
+    <div class="xp">
+      {{ range . }}
+        <div class="xp-org">
+          <span class="mk">▓▓</span> <b>{{ .kurum }}</b>
+          {{ with .aralik }}<span class="span">{{ . }}</span>{{ end }}
+        </div>
+        {{ $son := sub (len .roller) 1 }}
+        {{ range $i, $r := .roller }}
+          <div class="xp-role">
+            <span class="br">{{ if eq $i $son }}└──{{ else }}├──{{ end }}</span>
+            <span><b>{{ $r.unvan }}</b><em>{{ $r.donem }}</em></span>
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  {{ end }}
+</main>
+{{ end }}

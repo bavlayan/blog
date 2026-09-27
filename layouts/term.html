@@ -1,0 +1,6 @@
+{{ define "main" }}
+<main>
+  <div class="sec-head"><b>~/etiketler/{{ .Title }}</b> <span class="ln"></span> <span>{{ len .Pages }} kayıt</span></div>
+  {{ partial "postlist.html" (dict "pages" .Pages.ByDate.Reverse) }}
+</main>
+{{ end }}

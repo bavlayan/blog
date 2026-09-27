@@ -1,0 +1,15 @@
+{{ define "main" }}
+<main class="post">
+  <a class="back" href="{{ "/" | relURL }}">&lt; dizine dön</a>
+  <article>
+    <h1>{{ .Title }}</h1>
+    <p class="byline">
+      {{ .Date.Format "2006-01-02" }} · {{ .ReadingTime }} dk
+      {{- with .Params.etiketler }} · {{ delimit . ", " }}{{ end }}
+      {{- if .Lastmod.After .Date }} · düzenlendi {{ .Lastmod.Format "2006-01-02" }}{{ end }}
+    </p>
+    {{ .Content }}
+    <p class="endmark">▚▚▚</p>
+  </article>
+</main>
+{{ end }}

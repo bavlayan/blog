@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Locale }}" data-phos="amber">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  <div class="crt" aria-hidden="true"></div>
+  <div class="flicker" aria-hidden="true"></div>
+
+  <div class="wrap">
+    {{ partial "header.html" . }}
+    {{ block "main" . }}{{ end }}
+    {{ partial "footer.html" . }}
+  </div>
+
+  {{ with resources.Get "js/ui.js" }}
+    {{ $js := . | minify | fingerprint }}
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+  {{ end }}
+</body>
+</html>

@@ -1,0 +1,12 @@
+<div class="list">
+  {{ range .pages }}
+    <a class="row" href="{{ .RelPermalink }}">
+      <span class="cur">&gt;</span>
+      <span class="date">{{ .Date.Format "2006-01-02" }}</span>
+      <span class="name">{{ .Title }}</span>
+      <span class="tag{{ with .Params.etiketler }}{{ if gt (len .) 1 }} b{{ end }}{{ end }}">
+        {{- with .Params.etiketler }}{{ index . 0 }}{{ end -}}
+      </span>
+    </a>
+  {{ end }}
+</div>

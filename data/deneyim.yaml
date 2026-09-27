@@ -1,0 +1,11 @@
+# Deneyim bölümü — kurum bazlı gruplanır, roller sırayla listelenir.
+# En üstteki kurum en üstte görünür.
+
+- kurum: "ASELSAN"
+  aralik: "2022 — Devam"
+  roller:
+    - unvan: "Lead Engineer"
+      donem: "Oca 2024 – devam · 2 yıl 8 ay"
+    - unvan: "Senior Software Engineer"
+      donem: "Ekim 2022 – Oca 2024 · 1 yıl 3 ay"
+

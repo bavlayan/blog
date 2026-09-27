@@ -1,0 +1,15 @@
+{{ define "main" }}
+<main>
+  <div class="sec-head"><b>~/etiketler</b> <span class="ln"></span> <span>{{ len .Pages }} etiket</span></div>
+  <div class="list">
+    {{ range .Pages.ByTitle }}
+      <a class="row" href="{{ .RelPermalink }}">
+        <span class="cur">&gt;</span>
+        <span class="date">{{ len .Pages }} yazı</span>
+        <span class="name">{{ .Title }}</span>
+        <span class="tag"></span>
+      </a>
+    {{ end }}
+  </div>
+</main>
+{{ end }}

@@ -1,0 +1,8 @@
+<footer class="foot">
+  <span class="prompt"><span class="u">{{ site.Title | lower | replaceRE "[^a-z0-9]" "" }}</span>@<span class="d">shell</span>:~$ <span class="cursor" aria-hidden="true"></span></span>
+  <span class="spacer"></span>
+  <a href="{{ "index.xml" | relURL }}">rss</a>
+  {{ with site.Params.pgpUrl }}<a href="{{ . | relURL }}">pgp</a>{{ end }}
+  {{ with site.Params.sourceUrl }}<a href="{{ . }}" rel="me">kaynak</a>{{ end }}
+  <span>{{ site.Params.license }}</span>
+</footer>

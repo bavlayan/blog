@@ -1,0 +1,31 @@
+<header class="masthead">
+  {{ with resources.Get "banner.txt" }}
+    <pre class="banner" role="img" aria-label="{{ site.Title }}">
+{{- .Content -}}
+</pre>
+  {{ end }}
+
+  <div class="motd">
+    <span><span class="k">motd:</span> {{ site.Params.motd }}</span>
+    {{ $posts := where site.RegularPages "Type" "yazilar" }}
+    <span><b>{{ len $posts }}</b> yazı</span>
+    {{ with (index ($posts.ByDate.Reverse) 0) }}
+      <span>son giriş <b>{{ .Date.Format "2006-01-02" }}</b></span>
+    {{ end }}
+  </div>
+
+  <nav class="menu" aria-label="Ana menü">
+    {{ range site.Menus.main }}
+      <a href="{{ .URL | relURL }}"
+         {{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}aria-current="page"{{ end }}>
+        <span class="num">[{{ .Weight }}]</span> {{ .Name }}</a>
+    {{ end }}
+    <span class="spacer"></span>
+    <div class="phos">
+      fosfor:
+      <button type="button" data-set="amber" aria-pressed="true">amber</button>
+      <button type="button" data-set="green" aria-pressed="false">yeşil</button>
+      <button type="button" data-set="ice" aria-pressed="false">buz</button>
+    </div>
+  </nav>
+</header>
